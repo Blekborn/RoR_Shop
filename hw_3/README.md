@@ -1,5 +1,5 @@
 И так осталось ещё пару шагов и наш магазин будет готов, и так что нам нужно сделать:
-## heroku: https://aqueous-hollows-83315.herokuapp.com/
+## https://desolate-inlet-52595.herokuapp.com/
 
 
 1. Модключить мейлер используя Gmail - `Done`
