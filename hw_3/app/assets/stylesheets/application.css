@@ -1,0 +1,67 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require easy-autocomplete
+ *= require bootstrap
+ *= require_tree .
+ *= require_self
+ *= stub "active_admin"
+ */
+
+/**= require easy-autocomplete*/
+
+
+.pretty h4 .current {
+    padding-right: 12px;
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+.pretty h4 .asc {
+    background-image: url(/images/up_arrow.gif);
+}
+
+.pretty h4 .desc {
+    background-image: url(/images/down_arrow.gif);
+}
+
+.nested_nav {
+    margin-left: 1em;
+}
+
+.notice {
+    text-align: center;
+}
+.active-product {
+    margin-right: 20px;
+}
+.active-product .active {
+    background: #fff;
+    padding: 6px;
+    margin: -6px;
+    border-radius: 5px;
+}
+.active-product .active .color-t {
+    color: #111;
+}
+.color-t {
+    color: #5a6268;
+}
+.color-t:hover {
+    color: #5a6268;
+    text-decoration: none;
+
+}
+.or {
+    color: #5a6268;
+}
+

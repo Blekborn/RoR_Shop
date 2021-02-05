@@ -1,0 +1,15 @@
+#cart {
+  font-size: smaller;
+  color: #676565;
+  text-align: -webkit-center;
+  padding: 20px 0;
+  margin: 0;
+  .order-cart {
+    border: 1px solid #676565;
+  }
+  table {
+    border-top: 1px dotted #676565;
+    border-bottom: 1px dotted #676565;
+    margin-bottom: 10px;
+  }
+}

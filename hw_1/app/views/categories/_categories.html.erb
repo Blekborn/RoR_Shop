@@ -1,0 +1,5 @@
+<p id="notice"><%= notice %></p>
+<h1 class="my-4">Categories</h1>
+<% Category.all.each do |category| %>
+  <%= link_to category.name, category, id: category.id, class: "list-group-item text-decoration-none button" %>
+<% end %>

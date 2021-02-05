@@ -1,0 +1,72 @@
+<div class="container" style="margin-bottom: 300px">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render 'shared/submenu' %>
+      <br>
+      <%= form_tag products_path, method: :get do %>
+        <div class="price">
+          <%= text_field_tag :min_price, nil, class: 'price-form form-control', placeholder: 'Min' %>
+          <br>
+          <%= text_field_tag :max_price, nil, class: 'price-form form-control', placeholder: 'Max' %>
+          <br>
+          <%= submit_tag 'Search', class: 'btn btn-outline-dark shadow-non' %>
+      <% end %>
+      </div>
+      <br>
+      <%# if @cart %>
+        <%#= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+          <%#= render @cart %>
+        <%# end %>
+      <%# end %>
+      <div id="cart">
+        <%= render @cart %>
+      </div>
+
+    </div>
+    <div class="col-lg-9">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4 pretty">
+          <div class="card-body">
+            <h4 class="card-title">
+              <%= sortable "title" %> <%= sortable "price" %>
+            </h4>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card-body">
+            <h4 class="card-title">
+            </h4>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card-body">
+            <h4 class="card-title">
+            </h4>
+          </div>
+        </div>
+        <%# cache ['product', Product.last] do %>
+          <% @products.each do |product| %>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card h-100">
+                <%= image_tag product.image_url(:thumb).to_s %>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <%= product.title %>
+                  </h4>
+                  <h5><%= product.price %></h5>
+                  <p class="card-text"><%= product.description %></p>
+                  <%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <%# end %>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center align-items-center">
+    <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+      <%= will_paginate @product, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </div>
+  </div>
+</div>

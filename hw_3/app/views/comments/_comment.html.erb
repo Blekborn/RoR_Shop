@@ -1,0 +1,19 @@
+<% @comments.each do |comment| %>
+  <article class="blog-post w-20">
+    <small class="text-muted"><%= distance_of_time_in_words(comment.created_at, Time.now) %></small>
+    <br>
+    <% if comment.created_at < comment.updated_at %><span class="edited" style="color: #cc0000;">edited</span>
+    <% end %>
+    <strong class="d-table-cell"><%= render_stars(comment.rating) %></strong>
+    <p class="d-inline-block"><%= comment.body %></p>
+    <% if comment.user == current_user %>
+      <% if comment.created_at >= 1.hour.ago %>
+        <%= link_to 'Edit', edit_product_comment_path(@product, comment), :class => "btn btn-outline-dark shadow-none", id: "edit_comment-#{comment.id}" %>
+      <% end %>
+      <%= link_to 'Destroy Comment', [comment.product, comment],
+                  data: { confirm: 'Are you sure?' }, :class => "btn btn-outline-danger shadow-none", method: :delete, remote: true %>
+    <% end %>
+  </article>
+  <br>
+  <hr class="featurette-divider w-25 d-inline-block">
+<% end %>

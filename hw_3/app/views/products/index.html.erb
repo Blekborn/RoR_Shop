@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render 'shared/submenu' %>
+      <br>
+      <%= form_tag products_path, method: :get do %>
+        <div class="price">
+          <%= text_field_tag :min_price, nil, class: 'price-form form-control', placeholder: 'Min' %>
+          <br>
+          <%= text_field_tag :max_price, nil, class: 'price-form form-control', placeholder: 'Max' %>
+          <br>
+          <%= submit_tag 'Search', class: 'btn btn-outline-dark shadow-non' %>
+      <% end %>
+      <div id="cart">
+        <%= render @cart %>
+      </div>
+      </div>
+      <br>
+    </div>
+    <div class="col-lg-9">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4 pretty">
+          <div class="card-body">
+            <h4 class="card-title">
+              <%= sortable "title" %> <%= sortable "price" %>
+            </h4>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card-body">
+            <h4 class="card-title">
+            </h4>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card-body">
+            <h4 class="card-title">
+            </h4>
+          </div>
+        </div>
+        <% @products.each do |product| %>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <%= image_tag product.image_url(:thumb).to_s, class: "img-url" %>
+              <div class="card-body">
+                <h4 class="card-title h-50">
+                  <%= link_to product.title, product, :style => 'vertical-align:-webkit-baseline-middle;' %>
+                </h4>
+                <h5><%= number_to_currency(product.price, :locale => :uk) %></h5>
+                <div class="mb-0">
+                  <% if product.rating.blank? %>
+                  <% else %>
+                    <%= render_stars(product.rating) %>
+                  <% end %>
+                </div>
+                <%= button_to line_items_path(product_id: product), remote: true, class: "btn btn-outline-dark shadow-none float-right" do %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
+                  </svg>
+                <% end %>
+                <%= link_to "Modal product", "#myModal_#{product.id}", "data-toggle" => "modal" %>
+                <div class="modal fade" id="myModal_<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header" style="width: 77%;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <p class="card-text"style="width: 78%; margin: 0 auto;"><%= product.description %></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 1 16 16">
+                  <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+                </svg>
+                <span class="badge" style="font-size: 1rem;"><%= product.comments.count %></span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center align-items-center">
+    <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+      <%= will_paginate @product, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </div>
+  </div>
+</div>
+
+
+<!--<script type="text/javascript" charset="utf-8">-->
+<!--    var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))-->
+<!--    var collapseList = collapseElementList.map(function (collapseEl) {-->
+<!--        return new bootstrap.Collapse(collapseEl)-->
+<!--    })-->
+<!--</script>-->

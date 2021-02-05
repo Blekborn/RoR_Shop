@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: djfccg26r
+  api_key: '126928671111582'
+  api_secret: MputpHKetyNVf3DSSVsjIaEWN-4
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: djfccg26r
+  api_key: '126928671111582'
+  api_secret: MputpHKetyNVf3DSSVsjIaEWN-4
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: djfccg26r
+  api_key: '126928671111582'
+  api_secret: MputpHKetyNVf3DSSVsjIaEWN-4
+  enhance_image_tag: true
+  static_file_support: false

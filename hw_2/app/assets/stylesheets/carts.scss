@@ -1,0 +1,29 @@
+// Place all the styles related to the Cart controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+#cart {
+  font-size: smaller;
+  color: #676565;
+  text-align: -webkit-center;
+  padding: 20px 0;
+  margin: 0;
+  .order-cart {
+    border: 1px solid #676565;
+  }
+  table {
+    border-top: 1px dotted #676565;
+    border-bottom: 1px dotted #676565;
+    margin-bottom: 10px;
+  }
+}
+//ul {
+//  padding: 0;
+//  li {
+//    list-style: none;
+//
+//    a {
+//      color: #bfb;
+//      font-size: small;
+//    }
+//  }
+//}

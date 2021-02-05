@@ -1,0 +1,11 @@
+<div class="p-4 p-md-5 mb-4">
+  <div class="px-0 p-4">
+    <h1 class="display-4 font-italic text-center">Edit comment</h1>
+  </div>
+</div>
+
+<div class="container center">
+  <%= render 'comments/form', comment: @comment%>
+  <br>
+  <%= link_to 'Back', product_path(@product), :class => "btn btn-outline-dark shadow-none" %>
+</div>
